@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from '@/i18n/routing';
@@ -68,14 +68,21 @@ export default function MemberDeals() {
       orderBy('createdAt', 'desc')
     );
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const dealsData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      setDeals(dealsData);
-      setLoading(false);
-    });
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const dealsData = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setDeals(dealsData);
+        setLoading(false);
+      },
+      (error) => {
+        console.error("Error fetching member deals:", error);
+        setLoading(false);
+      }
+    );
 
     return () => unsubscribe();
   }, []);

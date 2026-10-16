@@ -127,7 +127,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ lo
                 key !== cityKey && (
                   <Link key={key} href={`/flights/${key}`} className="text-slate-600 hover:text-blue-600 hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors flex items-center justify-between group">
                     <span>Flights to {dest.name}</span>
-                    <span className="text-slate-300 group-hover:text-blue-400 transition-colors">?</span>
+                    <span className="text-slate-300 group-hover:text-blue-400 transition-colors">&rarr;</span>
                   </Link>
                 )
               ))}

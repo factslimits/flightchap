@@ -15,9 +15,13 @@ export default function VIPPromoSection() {
 
   useEffect(() => {
     async function fetchPromos() {
-      const q = query(collection(db, 'promo_codes'), orderBy('createdAt', 'desc'), limit(10));
-      const snapshot = await getDocs(q);
-      setPromos(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      try {
+        const q = query(collection(db, 'promo_codes'), orderBy('createdAt', 'desc'), limit(10));
+        const snapshot = await getDocs(q);
+        setPromos(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      } catch (err) {
+        console.error("Error fetching promos:", err);
+      }
     }
     fetchPromos();
   }, []);

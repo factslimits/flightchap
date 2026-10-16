@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "firebase": "^12.19.0",
+    "jimp": "^1.6.1",
     "lucide-react": "^1.46.0",
     "next": "16.3.5",
     "next-intl": "^4.14.6",
+    "puppeteer": "^25.12.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "resend": "^6.30.0"
